@@ -2,7 +2,7 @@ include 'emu8086.inc'
 .model small
 .stack 100h
 .data
-    a db 'Convert lower case to upper case $'
+    a db 'Convert upper case to lower case $'
 .code
     main proc
         mov ax,@data
@@ -13,15 +13,15 @@ include 'emu8086.inc'
         int 21h
         
         printn ' '
-        print 'Enter a lowercase character: '
+        print 'Enter a uppercase character: '
         mov ah,1
         int 21h
         mov bl,al
         
         mov ah,2
         printn ' '
-        print 'The uppercase character: '
-        sub bl,32
+        print 'The lowercase character: '
+        add bl,32
         mov dl,bl
         int 21h
         
